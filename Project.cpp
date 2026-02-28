@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int N = 50000;
+const int N = 500;
 const int T = 500;
 double *u = new double[N];
 double *uNext = new double[N];
@@ -31,10 +31,10 @@ void initialize()
 
 void heat_seq()
 {
-    ofstream outFileSeq("heat_output_seq.csv");
-    outFileSeq << fixed << setprecision(6);
+    // ofstream outFileSeq("heat_output_seq.csv");
+    // outFileSeq << fixed << setprecision(6);
 
-    writeSnapshot(outFileSeq, 0, u, N);
+    // writeSnapshot(outFileSeq, 0, u, N);
 
     for (int i = 1; i <= T; i++)
     {
@@ -47,18 +47,18 @@ void heat_seq()
         u = uNext;
         uNext = temp;
 
-        if (i % 50 == 0)
-        {
-            writeSnapshot(outFileSeq, i, u, N);
-        }
+        // if (i % 50 == 0)
+        // {
+        //     writeSnapshot(outFileSeq, i, u, N);
+        // }
     }
 
-    outFileSeq.close();
+    // outFileSeq.close();
 }
 
 void heat_par()
 {
-    ofstream outFilePar("heat_output_par.csv");
+    ofstream outFilePar("heat_output.csv");
 
     writeSnapshot(outFilePar, 0, u, N);
 
